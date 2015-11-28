@@ -11,7 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151127235929) do
+ActiveRecord::Schema.define(version: 20151128000456) do
+
+  create_table "kpis", force: :cascade do |t|
+    t.string   "description"
+    t.string   "responsibility"
+    t.datetime "milestone"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
 
   create_table "plans", force: :cascade do |t|
     t.string   "goal"

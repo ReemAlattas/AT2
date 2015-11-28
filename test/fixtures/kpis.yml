@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  description: MyString
+  responsibility: MyString
+  milestone: 2015-11-27 19:04:56
+
+two:
+  description: MyString
+  responsibility: MyString
+  milestone: 2015-11-27 19:04:56

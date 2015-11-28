@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  resources :kpis
   resources :plans
   
   get 'welcome/index'

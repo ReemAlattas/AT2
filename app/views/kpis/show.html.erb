@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @kpi.description %>
+</p>
+
+<p>
+  <strong>Responsibility:</strong>
+  <%= @kpi.responsibility %>
+</p>
+
+<p>
+  <strong>Milestone:</strong>
+  <%= @kpi.milestone %>
+</p>
+
+<%= link_to 'Edit', edit_kpi_path(@kpi) %> |
+<%= link_to 'Back', kpis_path %>
