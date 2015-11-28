@@ -14,7 +14,7 @@ class KpisController < ApplicationController
 
   # GET /kpis/new
   def new
-    @kpi = Kpi.new
+    @kpi = Kpi.new(plan_id: params[:plan_id])
   end
 
   # GET /kpis/1/edit
@@ -25,6 +25,7 @@ class KpisController < ApplicationController
   # POST /kpis.json
   def create
     @kpi = Kpi.new(kpi_params)
+    @kpi.plan_id = params[:plan_id]
 
     respond_to do |format|
       if @kpi.save
@@ -69,6 +70,6 @@ class KpisController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def kpi_params
-      params.require(:kpi).permit(:description, :responsibility, :milestone)
+      params.require(:kpi).permit(:description, :responsibility, :milestone, :plan_id)
     end
 end

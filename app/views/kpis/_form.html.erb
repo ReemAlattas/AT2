@@ -1,4 +1,5 @@
 <%= form_for(@kpi) do |f| %>
+<%= hidden_field_tag :plan_id, params[:plan_id] %>
   <% if @kpi.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@kpi.errors.count, "error") %> prohibited this kpi from being saved:</h2>
