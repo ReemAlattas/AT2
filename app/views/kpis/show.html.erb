@@ -15,5 +15,11 @@
   <%= @kpi.milestone %>
 </p>
 
-<%= link_to 'Edit', edit_kpi_path(@kpi) %> |
-<%= link_to 'Back', kpis_path %>
+<p>
+	<%= link_to 'Edit', edit_kpi_path(@kpi) %> |
+	<%= link_to 'Back', kpis_path %>
+</p>
+
+<p>
+	<%= link_to 'Add new Action', new_act_path(:kpi_id=>@kpi.id) %>
+</p>

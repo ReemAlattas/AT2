@@ -14,7 +14,7 @@ class ActsController < ApplicationController
 
   # GET /acts/new
   def new
-    @act = Act.new
+    @act = Act.new(kpi_id: params[:kpi_id])
   end
 
   # GET /acts/1/edit
@@ -25,6 +25,7 @@ class ActsController < ApplicationController
   # POST /acts.json
   def create
     @act = Act.new(act_params)
+    @act.kpi_id = params[:kpi_id]
 
     respond_to do |format|
       if @act.save
