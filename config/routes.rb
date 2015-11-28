@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   
   resources :acts
+  
   resources :kpis
   
   resources :plans

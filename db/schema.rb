@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151128001719) do
+ActiveRecord::Schema.define(version: 20151128004313) do
 
   create_table "acts", force: :cascade do |t|
     t.string   "desc"
@@ -26,7 +26,10 @@ ActiveRecord::Schema.define(version: 20151128001719) do
     t.datetime "milestone"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
+    t.integer  "plan_id"
   end
+
+  add_index "kpis", ["plan_id"], name: "index_kpis_on_plan_id"
 
   create_table "plans", force: :cascade do |t|
     t.string   "goal"
