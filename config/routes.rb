@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   resources :plans
   
   get 'welcome/index'
-  root 'welcome#index'
+  root 'plans#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
