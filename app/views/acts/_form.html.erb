@@ -13,14 +13,16 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :desc %><br>
+    <%= f.label :desc, 'Description' %><br>
     <%= f.text_field :desc %>
   </div>
+  <br>
   <div class="field">
     <%= f.label :target %><br>
     <%= f.text_field :target %>
   </div>
+  <br>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit 'Create Action' %>
   </div>
 <% end %>

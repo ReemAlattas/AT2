@@ -2,5 +2,11 @@
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @kpi %> |
-<%= link_to 'Back', kpis_path %>
+<p>
+	<%= link_to 'Show', @kpi %> |
+	<%= link_to 'Back', plans_path %>
+</p>
+
+<p>
+	<%= link_to 'Add new Action', new_act_path(:kpi_id=>@kpi.id) %>
+</p>
