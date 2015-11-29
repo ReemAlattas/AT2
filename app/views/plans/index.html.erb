@@ -10,10 +10,11 @@
 <%= link_to 'New Plan', new_plan_path %>
 
 <ul class="sTree2 listsClass" id="sTree2">
-  <% @plans.each do |plan| p_id = plan.id %>
+  <% @plans.each do |plan| p_id = plan.id; if plan.user_id == current_user.id %>
   <li>
     <div><%= plan.goal %><span class="actionSet"><%= link_to image_tag("edit.png"), edit_plan_path(plan) %> | <%= link_to image_tag("delete.png"), plan, method: :delete, data: { confirm: 'Are you sure?' } %></span></div>
     <%= render :partial => "kpis/select", locals: {p_id: p_id} %>
   </li>
   <% end %>
+   <% end %>
 </ul>

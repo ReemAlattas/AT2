@@ -16,7 +16,7 @@ class PlansController < ApplicationController
 
   # GET /plans/new
   def new
-    @plan = Plan.new
+    @plan = Plan.new(user_id: params[:user_id])
   end
 
   # GET /plans/1/edit
@@ -27,6 +27,7 @@ class PlansController < ApplicationController
   # POST /plans.json
   def create
     @plan = Plan.new(plan_params)
+    @plan.user_id = current_user.id
 
     respond_to do |format|
       if @plan.save
