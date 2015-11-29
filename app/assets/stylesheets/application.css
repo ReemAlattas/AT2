@@ -1,4 +1,4 @@
-  html, body, ul, li { margin:0; padding:0; background-color:#151515; color:#ffffff; font-family: verdana, arial, helvetica, sans-serif;
+  html, body, ul, li { margin:5; padding:5; background-color:#151515; color:#ffffff; font-family: verdana, arial, helvetica, sans-serif;
   font-size: 13px;}
   ul, li { list-style-type:none; color:#a6e22d; border:1px solid #3f3f3f; }
   ul.sTree, ul{ padding:0px; background-color:#151515; }
