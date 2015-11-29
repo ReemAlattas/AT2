@@ -1,0 +1,10 @@
+<ul>
+  <% @kpis.each do |kpi| %>
+    <li>
+      <div><%= kpi.description %></div>
+      <div><%= kpi.responsibility %></div>
+      <div><%= kpi.milestone %></div>
+    </li>
+  <% end %>
+</ul>
+

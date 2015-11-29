@@ -1,3 +1,105 @@
+<style type="text/css">
+  html, body, ul, li { margin:0; padding:0; background-color:#151515;}
+  ul, li { list-style-type:none; color:#b5e853; border:1px solid #3f3f3f; }
+  ul.sTree, ul{ padding:0px; background-color:#151515; }
+  ul.sTree2 li, ul#sortableListsBase li { padding-left:50px; margin:5px; border:1px solid #3f3f3f; background-color:#3f3f3f; }
+  li div { padding:7px; background-color:#222; Nborder:1px solid #3f3f3f; }
+  li, ul, div { border-radius: 3px; }
+  .pT20 { padding-top:20px; }
+  .pV10 { padding-top:10px; padding-bottom:10px; }
+  .dN { display:none; }
+  .dIB { display:inline-block; }
+    .vAM { vertical-align: text-bottom; }
+  .zI1000 { z-index:1000; }
+  .small1 { font-size:0.8em; }
+  .small2 { font-size:0.7em; }
+  .small3 { font-size:0.6em; }
+  .tAR { text-align:right; }
+  .clear { clear:both; }
+  img.descPicture { display:block; width:100%; margin:0 7px 30px 0; float:left; cursor:pointer; /*transition: all 0.5s ease;*/ }
+  img.descPicture.descPictureClose { width:150px; }
+  #sTree2 { margin:10px auto; }
+
+</style>
+
+<script src="http://code.jquery.com/jquery-git1.min.js"></script>
+<script src="/assets/jquery-sortable-lists.js"></script>
+<script type="text/javascript">
+$(function()
+{
+  var options = {
+    placeholderCss: {'background-color': '#ff8'},
+    hintCss: {'background-color':'#bbf'},
+        onChange: function( cEl )
+        {
+            console.log( 'onChange' );
+        },
+        complete: function( cEl )
+        {
+            console.log( 'complete' );
+        },
+    isAllowed: function( cEl, hint, target )
+    {
+      // Be carefull if you test some ul/ol elements here.
+      // Sometimes ul/ols are dynamically generated and so they have not some attributes as natural ul/ols.
+      // Be careful also if the hint is not visible. It has only display none so it is at the previouse place where it was before(excluding first moves before showing).
+      if(hint.parents('li').first().data('module') === 'c' && cEl.data('module') !== 'c')
+      {
+        hint.css('background-color', '#ff9999');
+        return false;
+      }
+      else
+      {
+        hint.css('background-color', '#99ff99');
+        return true;
+      }
+    },
+    opener: {
+       active: true,
+       close: '/assets/Remove2.png',
+       open: '/assets/Add2.png',
+       openerCss: {
+         'display': 'inline-block',
+         'width': '18px',
+         'height': '18px',
+         'float': 'left',
+         'margin-left': '-35px',
+         'margin-right': '5px',
+         'background-position': 'center center',
+         'background-repeat': 'no-repeat'
+       },
+       openerClass: ''
+    },
+    ignoreClass: 'clickable'
+  };
+
+  $('#sTree2, #sTree').sortableLists(options);
+
+  $('#toArrBtn').on('click', function(){ console.log($('#sTree2').sortableListsToArray()); });
+  $('#toHierBtn').on('click', function() { console.log($('#sTree2').sortableListsToHierarchy()); });
+  $('#toStrBtn').on('click', function() { console.log($('#sTree2').sortableListsToString()); });
+  $('.descPicture').on('click', function(e) { $(this).toggleClass('descPictureClose'); });
+
+  $('.clickable').on('click', function(e) { alert('Click works fine! IgnoreClass stops onDragStart event.'); });
+
+  /* Scrolling anchors */
+  $('#toPictureAnch').on('click', function(e) { scrollToAnch('pictureAnch'); });
+  $('#toBaseElementAnch').on('click', function(e) { scrollToAnch('baseElementAnch'); });
+  $('#toBaseElementAnch2').on('click', function(e) { scrollToAnch('baseElementAnch'); });
+  $('#toCssPatternAnch').on('click', function(e) { scrollToAnch('cssPatternAnch'); });
+
+  function scrollToAnch(id)
+  {
+    $('html, body').animate({
+      scrollTop: $("#" + id).offset().top
+    }, 750);
+    return false;
+  }
+
+});
+
+</script>
+
 <p id="notice"><%= notice %></p>
 
 <h1>Listing Plans</h1>
@@ -25,3 +127,12 @@
 <br>
 
 <%= link_to 'New Plan', new_plan_path %>
+
+<ul class="sTree2 listsClass" id="sTree2">
+  <% @plans.each do |plan| %>
+  <li>
+    <div><%= plan.goal %></div>
+    <% render :partial => "kpis/select" %>
+  </li>
+  <% end %>
+</ul>
