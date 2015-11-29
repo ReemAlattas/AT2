@@ -1,10 +1,11 @@
-<ul>
-  <% @kpis.each do |kpi| %>
+<% @kpis.each do |kpi| k_id = kpi.id; if kpi.plan_id == p_id %>
+  <ul>
     <li>
-      <div><%= kpi.description %></div>
-      <div><%= kpi.responsibility %></div>
-      <div><%= kpi.milestone %></div>
+      <div class="kpi"><span class="ktitle">KPI: </span><%= kpi.description %> | <span class="ktitle">Responsibility: </span><%= kpi.responsibility %> | <span class="ktitle">Milestone: </span><%= kpi.milestone %><span class="actionSet"><%= link_to image_tag("edit.png"), edit_kpi_path(kpi) %> | <%= link_to image_tag("delete.png"), kpi, method: :delete, data: { confirm: 'Are you sure?' } %></span></div>
+    <%= render :partial => "acts/aselect", locals: {k_id: k_id} %>
     </li>
+  </ul>
   <% end %>
-</ul>
+<% end %>
+
 

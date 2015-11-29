@@ -1,0 +1,10 @@
+<% @acts.each do |act| if act.kpi_id == k_id %>
+  <ul>
+    <li>
+      <div class="act"><span class="atitle">Action: </span><%= act.desc %> | <span class="atitle">Target: </span><%= act.target %><span class="actionSet"><%= link_to image_tag("edit.png"), edit_act_path(act) %> | <%= link_to image_tag("delete.png"), act, method: :delete, data: { confirm: 'Are you sure?' } %></span></div>
+    </li>
+  </ul>
+  <% end %>
+<% end %>
+
+

@@ -1,9 +1,9 @@
 <style type="text/css">
-  html, body, ul, li { margin:0; padding:0; background-color:#151515;}
-  ul, li { list-style-type:none; color:#b5e853; border:1px solid #3f3f3f; }
+  html, body, ul, li { margin:0; padding:0; background-color:#151515; color:#ffffff;}
+  ul, li { list-style-type:none; color:#a6e22d; border:1px solid #3f3f3f; }
   ul.sTree, ul{ padding:0px; background-color:#151515; }
   ul.sTree2 li, ul#sortableListsBase li { padding-left:50px; margin:5px; border:1px solid #3f3f3f; background-color:#3f3f3f; }
-  li div { padding:7px; background-color:#222; Nborder:1px solid #3f3f3f; }
+  li div { padding:7px; background-color:#222; border:1px solid #3f3f3f; }
   li, ul, div { border-radius: 3px; }
   .pT20 { padding-top:20px; }
   .pV10 { padding-top:10px; padding-bottom:10px; }
@@ -19,7 +19,14 @@
   img.descPicture { display:block; width:100%; margin:0 7px 30px 0; float:left; cursor:pointer; /*transition: all 0.5s ease;*/ }
   img.descPicture.descPictureClose { width:150px; }
   #sTree2 { margin:10px auto; }
-
+  .ktitle { color:#f92772;}
+  .kpi {color:#e6db74;}
+  .atitle {color:#66d9ef;}
+  .act {color:#ae81ff;}
+  .actionSet{color:#f09720; float:right;}
+  a {color:#f09720;}
+  a:visited {color:#f09720;}
+  a:hover {color:#3f3f3f;}
 </style>
 
 <script src="http://code.jquery.com/jquery-git1.min.js"></script>
@@ -104,35 +111,15 @@ $(function()
 
 <h1>Listing Plans</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Goal</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @plans.each do |plan| %>
-      <tr>
-        <td><%= plan.goal %></td>
-        <td><%= link_to 'Show', plan %></td>
-        <td><%= link_to 'Edit', edit_plan_path(plan) %></td>
-        <td><%= link_to 'Destroy', plan, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
 <br>
 
 <%= link_to 'New Plan', new_plan_path %>
 
 <ul class="sTree2 listsClass" id="sTree2">
-  <% @plans.each do |plan| %>
+  <% @plans.each do |plan| p_id = plan.id %>
   <li>
-    <div><%= plan.goal %></div>
-    <% render :partial => "kpis/select" %>
+    <div><%= plan.goal %><span class="actionSet"><%= link_to image_tag("edit.png"), edit_plan_path(plan) %> | <%= link_to image_tag("delete.png"), plan, method: :delete, data: { confirm: 'Are you sure?' } %></span></div>
+    <%= render :partial => "kpis/select", locals: {p_id: p_id} %>
   </li>
   <% end %>
 </ul>

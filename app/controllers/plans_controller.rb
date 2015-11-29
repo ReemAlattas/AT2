@@ -6,6 +6,7 @@ class PlansController < ApplicationController
   def index
     @plans = Plan.all
     @kpis = Kpi.all
+    @acts = Act.all
   end
 
   # GET /plans/1
