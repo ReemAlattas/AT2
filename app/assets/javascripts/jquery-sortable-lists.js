@@ -11,7 +11,7 @@
 	 * @param options
 	 * @returns this to unsure chaining
 	 */
-	console.log("including sortable lists plugin");
+	console.log("INCLUDING sortable lists plugin");
 	$.fn.sortableLists = function( options )
 	{
 		// Local variables. This scope is available for all the functions in this closure.
