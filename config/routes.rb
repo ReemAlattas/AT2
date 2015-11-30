@@ -1,12 +1,13 @@
 Rails.application.routes.draw do
-  
+
   devise_for :users
+  
   resources :acts
-  
+
   resources :kpis
-  
+
   resources :plans
-  
+
   get 'welcome/index'
   root 'plans#index'
 
